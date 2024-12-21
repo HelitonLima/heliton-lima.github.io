@@ -1,0 +1,531 @@
+@font-face {
+    font-family: 'ImperialScript';
+    src: url('../fonts/Imperial_Script/ImperialScript-Regular.ttf') format('truetype');
+}
+
+html, body { height: 100%; }
+body { margin: 0 }
+
+:root {
+    --light-blue: #47558d;
+    --matte-blue: #58628a;
+    --gray: #f5f5f5;
+    --dark-gray: #8b8b8b;
+    --dark: #1a1a1a;
+
+    --background-blue: #f0f2f5;
+
+    --transparent-blue: rgba(40, 50, 90, 0.4);
+    --transparent-matte-blue: rgba(88, 98, 138, 0.4);
+    --border: #0000001A;
+
+    --animation-durantion: 1.5s;
+}
+
+* {
+    outline: none;
+    font-family: Segoe UI, "Helvetica Neue", Arial, Verdana, Tahoma;
+    box-sizing: border-box;
+    color: var(--dark);
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+    margin: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--matte-blue);
+    border-radius: 8px;
+    margin: 8px;
+    border: 3px solid var(--background-blue);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--background-blue);
+    margin: 0 8px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    user-select: none;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+section .title {
+    font-family: 'ImperialScript';
+    font-size: 64px;
+    color: white;
+    border-bottom: 1px solid;
+    margin-bottom: 64px;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+section .title.animate-fade-in {
+    opacity: 1;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    max-width: 1280px;
+    width: calc(100% - 64px);
+}
+
+nav {
+    background: var(--gray);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    position: fixed;
+    border-radius: 0 0 32px 0;
+    z-index: 1000;
+    animation: topBottom 1s ease-in-out;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+nav ul li {
+    padding: 8px 16px;
+    background-color: var(--matte-blue);
+    border-radius: 16px 0 16px 0;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-style: italic;
+    transition: all .3s;
+    cursor: pointer;
+    animation: scale var(--animation-durantion) ease-in-out;
+}
+
+nav ul li:hover {
+    border-radius: 0;
+}
+
+nav .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.logo {
+    width: 64px;
+    animation: scale var(--animation-durantion) ease-in-out;
+}
+
+#home {
+    background-color: white;
+    background-image: url(../images/wave.svg);
+    background-repeat: repeat-x;
+    background-position-y: 100%;
+    animation: backgroundMoveUp var(--animation-durantion) ease-in-out;
+    padding-top: 70px;
+    aspect-ratio: 16/8;
+}
+
+#home .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+#home .image-container {
+    height: 100%;
+    margin-left: auto;
+    animation: fadeIn var(--animation-durantion) ease-in-out;
+}
+
+#home .image-container img {
+    height: 100%;
+}
+
+#home .texts {
+    padding: 24px 32px;
+    overflow: hidden;
+    color: var(--dark);
+    background-color: var(--gray);
+    border-radius: 48px 0 48px 0;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+#home .texts .circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    right: 12px;
+    top: 12px;
+    position: absolute;
+    animation: scale var(--animation-durantion) ease-in-out;
+    background-color: white;
+}
+
+#home .texts p {
+    font-size: 18px;
+    font-style: italic;
+    animation: leftRightDesc var(--animation-durantion) ease-in-out;
+}
+
+#home .texts a {
+    font-size: 16px;
+    color: var(--light-blue);
+    animation: fadeIn var(--animation-durantion) ease-in-out;
+}
+
+#home .texts a:hover {
+    text-decoration: underline;
+}
+
+#home .texts h2 {
+    animation: leftRight var(--animation-durantion) ease-in-out;
+}
+
+#timeline {
+    background-color: var(--matte-blue);
+    animation: fadeIn var(--animation-durantion) ease-in-out;
+    padding: 120px 0 40px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 120px;
+    position: relative;
+}
+
+.timeline .line {
+    width: 4px;
+    position: absolute;
+    background-color: white;
+    transition: all .3s ease;
+    opacity: 0;
+}
+
+.timeline .line.animate-height-percentage {
+    height: 100%;
+    opacity: 1;
+}
+
+.timeline .circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: 332px;
+    position: relative;
+    transition: all .3s ease;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.timeline .circle.animate-scale {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.timeline .circle::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--matte-blue);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+.timeline .timeline-item {
+    display: flex;
+    gap: 32px;
+}
+
+.timeline .timeline-item.left {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.timeline .timeline-item.left .circle {
+    margin-left: 0;
+    margin-right: 332px;
+}
+
+.timeline .timeline-item .content {
+    width: 300px;
+    opacity: 0;
+    transition: all .3s;
+    overflow: hidden;
+}
+
+.timeline .timeline-item .content.animate-fade-in {
+    opacity: 1;
+}
+
+.timeline .timeline-item h3 {
+    color: white;
+    margin-top: 12px;
+}
+
+.timeline .timeline-item p {
+    font-style: italic;
+    font-size: 14px;
+    color: #f5f5f5;
+}
+
+#projects {
+    background-color: white;
+    background-image: url(../images/wave-down.svg);
+    background-repeat: repeat-x;
+    background-position-y: 0%;
+    background-size: 120%;
+    padding: 50px 0 120px;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.slides {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    max-width: 960px;
+    aspect-ratio: 16/8;
+    padding: 24px;
+    background-color: var(--gray);;
+    border-radius: 48px 0 48px 0;
+    border: 1px solid var(--border);
+    gap: 24px;
+}
+
+.slides .slide {
+    width: 100%;
+    min-width: 100%;
+    transition: all .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.slides .slide p {
+    max-width: 400px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.buttons button {
+    cursor: pointer;
+    border: none;
+    border-radius: 16px 0;
+    background-color: var(--matte-blue);
+    color: white;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    width: 100px;
+    transition: all .3s;
+}
+
+.buttons button:hover {
+    border-radius: 0;
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.pagination .page {
+    width: 22px;
+    height: 12px;
+    border-radius: 50% 0;
+    overflow: hidden;
+    border: 1px var(--matte-blue) solid;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.pagination .page.active {
+    background-color: var(--matte-blue);
+}
+
+.pagination .page:hover {
+    border-radius: 0;
+    background-color: var(--transparent-matte-blue);
+}
+
+.slide-icons {
+    display: flex;
+    gap: 16px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn var(--animation-durantion) ease-in-out;
+}
+
+@keyframes topBottom {
+    from {
+        transform: translateY(-80px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes backgroundMoveUp {
+    from {
+        background-position-y: 190%;
+        opacity: 0;
+    }
+    to {
+        background-position-y: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundMoveDown {
+    from {
+        background-position-y: -22vw;
+    }
+    to {
+        background-position-y: 0vw;
+    }
+}
+
+.animate-background-move-down {
+    animation: backgroundMoveDown var(--animation-durantion) ease-in-out;
+}
+
+@keyframes leftRight {
+    from {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-left-right {
+    animation: leftRight var(--animation-durantion) ease-in-out;
+}
+
+@keyframes rightLeft {
+    from {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }   
+}
+
+.animate-right-left {
+    animation: rightLeft var(--animation-durantion) ease-in-out;
+}
+
+@keyframes leftRightDesc {
+    from {
+        transform: translateX(calc(100vw - 100%));
+        opacity: 0;
+
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-scale {
+    animation: scale var(--animation-durantion) ease-in-out;
+}
+
+@keyframes heightPercentage {
+    from {
+        height: 0%;
+        opacity: 0;
+    }
+    to {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+.animate-height-percentage {
+    animation: heightPercentage var(--animation-durantion) ease-in-out;
+}
+
+
+/* MOBILE  */
+
+@media (max-width: 1500px) {
+}

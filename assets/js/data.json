@@ -1,0 +1,30 @@
+[
+    {
+        "year": 2015,
+        "description": "Started my journey in the world of programming, I started studying JAVA and I created my app."
+    },
+    {
+        "year": 2017,
+        "description": "I enrolled in a technical course in Information Technology, where I further developed my programming skills and was introduced to the world of web development."
+    },
+    {
+        "year": 2019,
+        "description": "I finished my technical course and started a college degree in Systems Analysis and Development to enhance my professional level."
+    },
+    {
+        "year": 2020,
+        "description": "I began an internship at a company called KeyLabs as a Full Stack developer, using Ionic and Node.js frameworks, and after three months, I was promoted to Junior Developer."
+    },
+    {
+        "year": 2021,
+        "description": "I transitioned to a company called Kron Digital, where I work exclusively as a Frontend developer, using Angular and React frameworks."
+    },
+    {
+        "year": 2023,
+        "description": "I finished my college degree in Systems Analysis and Development."
+    },
+    {
+        "year": 2024,
+        "description": "Promoted to Mid-Level Developer."
+    }
+]
