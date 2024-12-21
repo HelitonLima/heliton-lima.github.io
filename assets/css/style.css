@@ -316,6 +316,10 @@ nav .wrapper {
     padding: 50px 0 120px;
 }
 
+#projects .title {
+    transform: translateY(30px);
+}
+
 .banner {
     display: flex;
     align-items: center;
