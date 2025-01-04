@@ -410,6 +410,19 @@ nav .wrapper {
     gap: 16px;
 }
 
+#contact {
+    background-image: url(../images/layered-peaks-haikei.svg);
+    aspect-ratio: 16 / 8;
+    background-size: cover;
+    background-position: bottom;
+    padding-top: 90px;
+}
+
+#contact h2.title {
+    color: var(--matte-blue);
+    opacity: 1;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
