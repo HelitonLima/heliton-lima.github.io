@@ -45,76 +45,6 @@ class Timeline {
         
         return li;
     }
-
-    _checkScroll() {
-        const rect = this._timeline.getBoundingClientRect();
-        const line = this._timeline.querySelector('.line');
-        const circles = this._timeline.querySelectorAll('.circle');
-        const content = this._timeline.querySelectorAll('.content');
-        const timeLineItems = this._timeline.querySelectorAll('.timeline-item');
-        const title = this._timeline.querySelector('h2');
-
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
-            title.classList.add('animate-fade-in');
-            line.classList.add('animate-height-percentage');
-
-            circles.forEach(circle => circle.classList.add(`animate-scale`));
-            
-            content.forEach((item, index) => {
-                const position = timeLineItems[index].classList.contains('left') ? 'right-left' : 'left-right';
-                
-                item.classList.add('animate-fade-in');
-                item.querySelector('h3').classList.add(`animate-${position}`);
-                item.querySelector('p').classList.add(`animate-${position}`);
-            });
-        }
-        
-        if (rect.top > window.innerHeight || rect.bottom - 200 < 0) {
-            title.classList.remove('animate-fade-in');
-            line.classList.remove('animate-height-percentage');
-            circles.forEach(circle => circle.classList.remove(`animate-scale`));
-
-            content.forEach(item => {
-                item.classList.remove('animate-fade-in');
-                item.querySelector('h3').classList.remove('animate-right-left', 'animate-left-right');
-                item.querySelector('p').classList.remove('animate-right-left', 'animate-left-right');
-            });
-        }
-    }
-}
-
-class Projects {
-    _projects;
-
-    constructor() {
-        this._projects = document.querySelector('#projects');
-    }
-
-    _checkScroll() {
-        const rect = this._projects.getBoundingClientRect();
-        const title = this._projects.querySelector('h2');
-
-        title.style.animationDelay = '1.5s';
-        title.style.transitionDelay = '1.5s';
-        
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
-            title.classList.add('animate-fade-in');
-
-            this._projects.classList.add('animate-background-move-down');
-            this._projects.querySelector('.slides').classList.add('animate-scale');
-            this._projects.querySelector('.pagination').classList.add('animate-fade-in');
-            this._projects.querySelector('.buttons').classList.add('animate-fade-in');
-        }
-
-        if (rect.top > window.innerHeight || rect.bottom - 200 < 0) {
-            title.classList.remove('animate-fade-in');
-
-            this._projects.classList.remove('animate-background-move-down');
-            this._projects.querySelector('.slides').classList.remove('animate-scale');
-            this._projects.querySelector('.pagination').classList.remove('animate-fade-in');
-            this._projects.querySelector('.buttons').classList.remove('animate-fade-in');
-        }
-    }
 }
 
 class Player {
@@ -178,7 +108,6 @@ class Player {
 
 const player = new Player;
 const timeline = new Timeline();
-const projects = new Projects();
 
 timeline._createTimeline();
 
@@ -204,8 +133,17 @@ for (let i = 0; i < pages.length; i++) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const checkScroll = () => {
-        timeline._checkScroll();
-        projects._checkScroll();
+        document.querySelectorAll('section').forEach(section => {
+            const rect = section.getBoundingClientRect();
+        
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                section.classList.add('animate');
+            }
+
+            if (rect.top > window.innerHeight - 200 || rect.bottom - 200 < 0) {
+                section.classList.remove('animate');
+            }
+        })
     };
 
     window.addEventListener('scroll', checkScroll);
