@@ -76,6 +76,7 @@ section {
     justify-content: center;
     max-width: 100vw;
     overflow: hidden;
+    transition: all var(--animation-durantion) ease-in-out;
 }
 
 section .title {
@@ -83,8 +84,8 @@ section .title {
     font-size: 64px;
     color: white;
     margin-bottom: 64px;
-    transition: all var(--animation-durantion) ease;
     text-align: center;
+    transition: all var(--animation-durantion) ease-in-out;
 }
 
 section:not(.animate) .title {
@@ -151,9 +152,12 @@ nav .wrapper {
     background-image: url(../images/wave.svg);
     background-repeat: repeat-x;
     background-position-y: 100%;
-    animation: backgroundMoveUp var(--animation-durantion) ease-in-out;
     padding-top: 70px;
     aspect-ratio: 16/8;
+}
+
+#home:not(.animate) {
+    background-position-y: 190%;
 }
 
 #home .wrapper {
@@ -165,7 +169,11 @@ nav .wrapper {
 #home .image-container {
     height: 100%;
     margin-left: auto;
-    animation: fadeIn var(--animation-durantion) ease-in-out;
+    transition: all var(--animation-durantion) ease-in-out;
+}
+
+#home:not(.animate) .image-container {
+    opacity: 0;
 }
 
 #home .image-container img {
@@ -180,6 +188,14 @@ nav .wrapper {
     border-radius: 48px 0 48px 0;
     border: 1px solid var(--border);
     position: relative;
+    transition: all var(--animation-durantion) ease-in-out;
+    height: 200px;
+    overflow: hidden;
+}
+
+#home:not(.animate) .texts {
+    opacity: 0;
+    height: 0px;
 }
 
 .circle-gap {
@@ -190,19 +206,35 @@ nav .wrapper {
     right: 12px;
     top: 12px;
     position: absolute;
-    animation: scale var(--animation-durantion) ease-in-out;
     background-color: white;
+    transition: all var(--animation-durantion) ease-in-out;
+}
+
+section:not(.animate) .circle-gap {
+    transform: scale(0);
+    opacity: 0;
 }
 
 #home .texts p {
     font-style: italic;
-    animation: leftRightDesc var(--animation-durantion) ease-in-out;
+    transition: all var(--animation-durantion) ease-in-out;
+}
+
+#home:not(.animate) .texts p {
+    transform: translateX(100%);
+    opacity: 0;
 }
 
 #home .texts a {
     font-size: 16px;
     color: var(--light-blue);
-    animation: fadeIn var(--animation-durantion) ease-in-out;
+    transition: all var(--animation-durantion) ease-in-out;
+    display: block;
+}
+
+#home:not(.animate) .texts a {
+    opacity: 0;
+    transform: translateY(40px);
 }
 
 #home .texts a:hover {
@@ -210,12 +242,16 @@ nav .wrapper {
 }
 
 #home .texts h2 {
-    animation: leftRight var(--animation-durantion) ease-in-out;
+    transition: all var(--animation-durantion) ease-in-out;
+}
+
+#home:not(.animate) .texts h2 {
+    transform: translateX(-200px);
+    opacity: 0;    
 }
 
 #timeline {
     background-color: var(--matte-blue);
-    animation: fadeIn var(--animation-durantion) ease-in-out;
     padding: 120px 0 40px;
 }
 
@@ -513,61 +549,12 @@ nav .wrapper {
     min-width: 350px;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.animate-fade-in {
-    animation: fadeIn var(--animation-durantion) ease-in-out;
-}
-
 @keyframes topBottom {
     from {
         transform: translateY(-80px);
     }
     to {
         transform: translateY(0);
-    }
-}
-
-@keyframes backgroundMoveUp {
-    from {
-        background-position-y: 190%;
-        opacity: 0;
-    }
-    to {
-        background-position-y: 100%;
-        opacity: 1;
-    }
-}
-
-@keyframes backgroundMoveDown {
-    from {
-        background-position-y: -22vw;
-    }
-    to {
-        background-position-y: 0vw;
-    }
-}
-
-.animate-background-move-down {
-    animation: backgroundMoveDown var(--animation-durantion) ease-in-out;
-}
-
-@keyframes leftRightDesc {
-    from {
-        transform: translateX(calc(100vw - 100%));
-        opacity: 0;
-
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
     }
 }
 
@@ -581,26 +568,6 @@ nav .wrapper {
         opacity: 1;
     }
 }
-
-.animate-scale {
-    animation: scale var(--animation-durantion) ease-in-out;
-}
-
-@keyframes heightPercentage {
-    from {
-        height: 0%;
-        opacity: 0;
-    }
-    to {
-        height: 100%;
-        opacity: 1;
-    }
-}
-
-.animate-height-percentage {
-    animation: heightPercentage var(--animation-durantion) ease-in-out;
-}
-
 
 /* MOBILE  */
 
