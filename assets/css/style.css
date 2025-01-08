@@ -19,7 +19,7 @@ body { margin: 0 }
     --transparent-matte-blue: rgba(88, 98, 138, 0.4);
     --border: #0000001A;
 
-    --animation-durantion: 1.5s;
+    --animation-durantion: 1.2s;
 }
 
 * {
@@ -122,13 +122,23 @@ nav ul li {
     padding: 8px 16px;
     background-color: var(--matte-blue);
     border-radius: 16px 0 16px 0;
-    color: white;
     font-size: 12px;
     text-transform: uppercase;
     font-style: italic;
     transition: all .3s;
     cursor: pointer;
     animation: scale var(--animation-durantion) ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav ul li img {
+    width: 16px;
+}
+
+nav ul li span {
+    color: white;
 }
 
 nav ul li:hover {
@@ -140,6 +150,67 @@ nav .wrapper {
     justify-content: space-between;
     align-items: center;
     padding: 4px 0;
+}
+
+nav .menu {
+    display: none;
+    border: none;
+    background: transparent;
+}
+
+.menu-mobile {
+    position: fixed;
+    padding: 76px 20px 8px;
+    background-color: var(--matte-blue);
+    color: white;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    border-radius: 0 0 32px 0;
+    visibility: hidden;
+    top: -200px;
+    display: none;
+    transition: all var(--animation-durantion) ease;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+} 
+
+.menu-mobile.open {
+    visibility: visible;
+    top: 20px;
+    width: 100%;
+    opacity: 1;
+}
+
+.menu-mobile:not(.open) li {
+    opacity: 0;
+}
+
+.menu-mobile ul {
+    min-width: calc(100vw - 40px);
+}
+
+.menu-mobile li {
+    color: white;
+    padding: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--transparent-blue);
+    transition: all var(--animation-durantion) ease-in-out;
+}
+
+.menu-mobile ul li img {
+    width: 16px;
+}
+
+.menu-mobile ul li span {
+    color: white;
+}
+
+
+.menu-mobile a:last-child li {
+    border-bottom: none;
 }
 
 .logo {
@@ -569,7 +640,136 @@ section:not(.animate) .circle-gap {
     }
 }
 
-/* MOBILE  */
+/* RESPONSIVE  */
 
-@media (max-width: 1500px) {
+@media (max-width: 1440px) {
+    #home .texts p {
+        font-size: 14px;
+    }
+
+    #projects .title {
+        text-shadow: 0 0 8px var(--matte-blue);
+    }
+}
+
+@media (max-width: 768px) {
+    #home .texts {
+        height: auto;
+        margin: 0 0 64px 0;
+        z-index: 1;
+    }
+
+    #home:not(.animate) .texts {
+        height: auto;
+    }
+
+    #contact {
+        min-height: 764px;
+    }
+
+    #home .wrapper {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+
+    #home .image-container {
+        transform: translateY(24px);
+        z-index: 0;
+        margin-right: auto;
+        height: 260px;
+    }
+
+    #home {
+        aspect-ratio: unset;
+    }
+
+    #home:not(.animate) {
+        background-position-y: 100vh;
+    }
+
+    .timeline .circle {
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        margin-left: 0;
+    }
+
+    .timeline .circle::before {
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+        top: 2px;
+        left: 2px;
+    }
+
+    .timeline .line {
+        width: 2px;
+        left: 12px;
+    }
+
+    .timeline .timeline-item.left {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .timeline .timeline-item.left .circle {
+        margin-right: 0;
+    }
+
+    .timeline .timeline-item h3 {
+        margin-top: 0;
+    }
+
+    .timeline {
+        gap: 50px;
+    }
+
+    .timeline .timeline-item,
+    .timeline .timeline-item .content {
+        width: 100%;
+    }
+
+    section .title {
+        margin-bottom: 32px;
+    }
+
+    #timeline {
+        padding: 90px 0 40px;
+    }
+
+    .slides {
+        aspect-ratio: unset;
+    }
+
+    #contact {
+        padding: 40px 0 200px;
+    }
+
+    #projects:not(.animate) .title {
+        opacity: 0;
+    }
+
+    nav .menu-desktop ul {
+        display: none;
+    }
+
+    nav .menu {
+        display: block;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    .menu-mobile ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    #home {
+        background-image: url(../images/wave_mobile.svg);
+        background-size: cover;
+    }
 }

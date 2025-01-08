@@ -149,4 +149,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', checkScroll);
 
     checkScroll();
+
+    const nav = document.querySelector('nav');
+    const menu = nav.querySelector('.menu');
+    const menuMobile = document.querySelector('.menu-mobile'); 
+    const mobileLinks = menuMobile.querySelectorAll('a');
+
+    menu.onclick = () => {
+        menuMobile.classList.toggle('open');
+    }
+
+    mobileLinks.forEach(link => {
+        link.onclick = () => {
+            menuMobile.classList.remove('open');
+        }
+    });
 });
